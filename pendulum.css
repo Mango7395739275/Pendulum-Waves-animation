@@ -1,0 +1,132 @@
+body {
+    background: black;
+    min-height: 100dvh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.circle4pendulum {
+    background-color: lightslategray;
+    width: 700px;
+    height: 700px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    box-shadow: 0px 0px 80px 40px pink;
+}
+
+.circle4pendulum > * {
+    width: 700px;
+    height: 40px;
+    background-color: transparent;
+    border-radius: 50%;
+    position: absolute;
+    transform: none;
+}                                                       
+
+
+.filler1 {
+    rotate: 0deg;
+}
+
+.filler2 {
+    rotate: 22.5deg;
+}
+
+.filler3 {
+    rotate: 45deg;
+}
+
+.filler4 {
+    rotate: 67.5deg;
+}
+
+.filler5 {
+    rotate: 90deg;
+}
+
+.filler6 {
+    rotate: 112.5deg;
+}
+
+.filler7 {
+    rotate: 135deg;
+}
+
+.filler8 {
+    rotate: 157.5deg;
+}
+
+
+
+
+.circle4pendulum > * > * {
+    width: 40px;
+    height: 40px;
+    background-color: rgb(200, 200, 200);
+    border-radius: 50%;
+    position: absolute;
+}
+
+@keyframes balls {
+    0% {transform: translateX(0px);}
+    50% {transform: translateX(660px);}
+    100% {transform: translateX(0px);}
+}
+
+.ball1 {
+    animation: balls 4s ease-in-out 0s infinite;
+}
+
+.ball2 {
+    animation: balls 4s ease-in-out 0.25s infinite;
+}
+
+.ball3 {
+    animation: balls 4s ease-in-out 0.5s infinite;
+}
+
+.ball4 {
+    animation: balls 4s ease-in-out 0.75s infinite;
+}
+
+.ball5 {
+    animation: balls 4s ease-in-out 1s infinite;
+}
+
+.ball6 {
+    animation: balls 4s ease-in-out 1.25s infinite;
+}
+
+.ball7 {
+    animation: balls 4s ease-in-out 1.5s infinite;
+}
+
+.ball8 {
+    animation: balls 4s ease-in-out 1.75s infinite;
+}
+
+@media (max-width: 900px), (max-height: 900px) {
+    .circle4pendulum {
+        position: relative;
+        width: min(90vw, 90dvh);
+        height: min(90vw, 90dvh);
+    }
+
+    .circle4pendulum > * {
+        width: 100%;
+        height: 9.286%;
+    }
+
+    .circle4pendulum > * > * {
+        width: 9.286%;
+        height: 100%;
+        transform-origin: 538.46% 50%;
+    }
+
+}
