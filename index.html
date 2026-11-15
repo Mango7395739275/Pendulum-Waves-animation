@@ -35,5 +35,50 @@
         </div>
     </div>
 
+    <button id="reverse">Reverse</button>
+
+
+
+<script>
+    let reversebtn = document.getElementById("reverse");
+    let balls = document.querySelectorAll(".circle4pendulum > * > *");
+    let animations = Array.from(balls, (ball) => ball.getAnimations()[0]);
+    let normdlay = animations.map((animation) => animation.effect.getTiming().delay);
+    let reversed = false;
+    let transition = null;
+
+    reversebtn.addEventListener("click", () => {
+        if (transition !== null) {
+            cancelAnimationFrame(transition);
+        }
+
+        reversed = !reversed;
+        let startdly = animations.map((animation) => animation.effect.getTiming().delay);
+        let trgtdly = normdlay.map((delay) => reversed ? -delay : delay);
+        let startTime = performance.now();
+
+        function transitionDelays(currentTime) {
+            let progress = Math.min((currentTime - startTime) / 2000, 1);
+            let easedinoutprogress = progress * progress * (3 - 2 * progress);
+
+            animations.forEach((animation, index) => {
+                let delay = startdly[index] +
+                    (trgtdly[index] - startdly[index]) * easedinoutprogress;
+                animation.effect.updateTiming({ delay });
+            });
+
+            if (progress < 1) {
+                transition = requestAnimationFrame(transitionDelays);
+            } else {
+                transition = null;
+            }
+        }
+
+        transition = requestAnimationFrame(transitionDelays);
+    });
+
+    /* egyaltalan nem igy akartam hogy kinezzem, de nem nez ki rosszul tbh tht lehet meghagyom */
+</script>
+
 </body>
 </html>
