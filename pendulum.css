@@ -1,12 +1,17 @@
 body {
     background: black;
+    min-height: 100vh;
     min-height: 100dvh;
+    margin: 0;
+    box-sizing: border-box;
+    padding: 16px;
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
     flex-direction: column;
+    gap: 20px;
 }
 
 #reverse {
@@ -15,11 +20,15 @@ body {
     background-color: darkgoldenrod;
     text-align: center;
     border-radius: 25px;
-    margin-top: 20px;
+    margin: 0;
     z-index: 10;
+    border: 0;
+    cursor: pointer;
+    flex: 0 0 auto;
 }
 
 .circle4pendulum {
+    --pendulum-scale: 1;
     background-color: lightslategray;
     width: 700px;
     height: 700px;
@@ -29,6 +38,8 @@ body {
     align-items: center;
     overflow: hidden;
     box-shadow: 0px 0px 80px 40px pink;
+    zoom: var(--pendulum-scale);
+    flex: 0 0 auto;
 }
 
 .circle4pendulum > * {
@@ -120,24 +131,4 @@ body {
 
 .ball8 {
     animation: balls 4s ease-in-out 1.75s infinite forwards;
-}
-
-@media (max-width: 900px), (max-height: 900px) {
-    .circle4pendulum {
-        position: relative;
-        width: min(90vw, 90dvh);
-        height: min(90vw, 90dvh);
-    }
-
-    .circle4pendulum > * {
-        width: 100%;
-        height: 9%;
-    }
-
-    .circle4pendulum > * > * {
-        width: 9%;
-        height: 100%;
-        transform-origin: 538% 50%;
-    }
-
 }
